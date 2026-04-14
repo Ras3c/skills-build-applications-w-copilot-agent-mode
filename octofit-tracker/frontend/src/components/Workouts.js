@@ -17,13 +17,32 @@ const Workouts = () => {
   }, [endpoint]);
 
   return (
-    <div>
-      <h2>Workouts</h2>
-      <ul>
-        {workouts.map((workout, idx) => (
-          <li key={workout.id || idx}>{workout.name || JSON.stringify(workout)}</li>
-        ))}
-      </ul>
+    <div className="card mb-4">
+      <div className="card-body">
+        <h2 className="card-title display-6 mb-4">Workouts</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-bordered">
+            <thead className="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              {workouts.map((workout, idx) => (
+                <tr key={workout.id || idx}>
+                  <td>{workout.id || idx + 1}</td>
+                  <td>{workout.name || '-'}</td>
+                  <td>{workout.type || '-'}</td>
+                  <td>{workout.duration || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
